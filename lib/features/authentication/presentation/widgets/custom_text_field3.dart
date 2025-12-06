@@ -31,6 +31,7 @@ class _CustomTextFieldState extends State<CustomTextField3> {
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: TextFormField(
+          cursorColor: kPrimaryColorB,
           textAlign: TextAlign.right,
           style: const TextStyle(color: Colors.grey),
           decoration: InputDecoration(
