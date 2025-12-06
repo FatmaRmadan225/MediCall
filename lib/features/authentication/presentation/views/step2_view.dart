@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grad_project/features/authentication/presentation/widgets/custom_botton2.dart';
 import 'package:grad_project/features/authentication/presentation/widgets/custom_text_field3.dart';
 import 'package:grad_project/features/authentication/presentation/widgets/steps.dart';
+import 'package:grad_project/utils/app_router.dart';
 
 class Step2View extends StatelessWidget {
   const Step2View({super.key});
@@ -26,7 +28,7 @@ class Step2View extends StatelessWidget {
                   height: 40,
                   alignment: Alignment.center,
                   child: Image.asset(
-                    "assets/images/medicall2(1)(1).jpg",
+                    "assets/images/medicall2(1)(1).png",
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -43,12 +45,19 @@ class Step2View extends StatelessWidget {
                  SizedBox(height: 150,),
                  Row(
                   children: [
-                    CustomButton2(onPressed: (){}, text: 'رجوع'),
+                    CustomButton2(onPressed: (){
+                      GoRouter.of(context).pop();
+                    }, text: 'رجوع'),
                     Spacer(flex: 1,),
-                    CustomButton2(onPressed: (){}, text: 'التالي'),
+                    CustomButton2(onPressed: (){
+                   GoRouter.of(context).push(AppRouter.kSign3Up);
+                    }, text: 'التالي'),
+                  
                    
                   ],
-                 )
+                 ),
+
+                   SizedBox(height: 30,)
               ],
             ),
           ),

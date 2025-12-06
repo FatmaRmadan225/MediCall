@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grad_project/features/authentication/presentation/views/login_view.dart';
-import 'package:grad_project/features/authentication/presentation/views/sign_up_view.dart';
-import 'package:grad_project/features/authentication/presentation/views/step2_view.dart';
-import 'package:grad_project/features/authentication/presentation/views/step3_view.dart';
+import 'package:grad_project/generated/l10n.dart';
+import 'package:grad_project/utils/app_router.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MediApp());
@@ -12,9 +11,17 @@ class MediApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Step3View(),
+      locale: Locale("ar"),
+  routerConfig: AppRouter.router,
+         localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
     );
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grad_project/constants.dart';
 import 'package:grad_project/features/authentication/presentation/widgets/custom_botton.dart';
 import 'package:grad_project/features/authentication/presentation/widgets/custom_text_field1.dart';
+import 'package:grad_project/utils/app_router.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -26,12 +28,12 @@ class LoginView extends StatelessWidget {
                   height: 40,
                   alignment: Alignment.center,
                   child: Image.asset(
-                    "assets/images/medicall2(1)(1).jpg",
+                    "assets/images/medicall2(1)(1).png",
                     fit: BoxFit.contain,
                   ),
                 ),
 
-                const SizedBox(height: 70),
+                const SizedBox(height: 30),
 
                 Text(
                   "! مرحبًا بعودتك ",
@@ -91,7 +93,9 @@ class LoginView extends StatelessWidget {
                   children: [
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                      GoRouter.of(context).push(AppRouter.kChoicePage);
+                      },
                       child: Text(
                         ' أنشئ حسابًا',
                         style: TextStyle(color: secColor, fontSize: 15),
@@ -101,9 +105,10 @@ class LoginView extends StatelessWidget {
                       'ليس لديك حساب؟',
                       style: TextStyle(color: priColor, fontSize: 13),
                     ),
-                    const Spacer(),
+                   const Spacer(),
                   ],
                 ),
+                const SizedBox(height: 30),
               ],
             ),
           ),

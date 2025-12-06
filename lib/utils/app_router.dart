@@ -1,0 +1,41 @@
+import 'package:go_router/go_router.dart';
+import 'package:grad_project/features/authentication/presentation/views/login_view.dart';
+import 'package:grad_project/features/authentication/presentation/views/sign_up_view.dart';
+import 'package:grad_project/features/authentication/presentation/views/step2_view.dart';
+import 'package:grad_project/features/authentication/presentation/views/step3_view.dart';
+import 'package:grad_project/features/bottom_nav/bottom_nav_view.dart';
+import 'package:grad_project/features/onboarding/presentation/views/choice_page_view.dart';
+import 'package:grad_project/features/onboarding/presentation/views/onbarding_page_view.dart';
+import 'package:grad_project/features/onboarding/presentation/views/splash_view.dart';
+import 'package:grad_project/features/onboarding/presentation/views/start_now_view.dart';
+
+abstract class AppRouter {
+  static const String kStartNow = "/start_now";
+  static const String kOnboardingPages = "/onboarding_pages";
+  static const String kChoicePage = "/choice_page";
+  static const String kBottomVavPage = "/bottom_nav_pag";
+  static const String kLoginPage = "/login_page";
+  static const String kSignUp = "/sign_up_page";
+  static const String kSign2Up = "/sign_up_steptwo_page";
+  static const String kSign3Up = "/sign_up_stepthree_page";
+
+  static final router = GoRouter(
+    routes: [
+      GoRoute(path: "/", builder: (context, state) => SplashView()),
+      GoRoute(
+        path: kBottomVavPage,
+        builder: (context, state) => BottomNavView(),
+      ),
+      GoRoute(path: kStartNow, builder: (context, state) => StartNowView()),
+      GoRoute(
+        path: kOnboardingPages,
+        builder: (context, state) => OnboardingPageView(),
+      ),
+      GoRoute(path: kChoicePage, builder: (context, state) => ChoicePageView()),
+      GoRoute(path: kLoginPage, builder: (context, state) => LoginView()),
+      GoRoute(path: kSignUp, builder: (context, state) => SignUpView()),
+       GoRoute(path: kSign2Up, builder: (context, state) => Step2View()),
+        GoRoute(path: kSign3Up, builder: (context, state) => Step3View()),
+    ],
+  );
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grad_project/constants.dart';
 import 'package:grad_project/core/helper/image_picker_helper.dart';
 import 'package:grad_project/features/authentication/presentation/widgets/custom_botton2.dart';
@@ -30,13 +31,13 @@ class _Step3ViewState extends State<Step3View> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 30),
+             const SizedBox(height: 30),
 
               Container(
                 height: 40,
                 alignment: Alignment.center,
                 child: Image.asset(
-                  "assets/images/medicall2(1)(1).jpg",
+                  "assets/images/medicall2(1)(1).png",
                   fit: BoxFit.contain,
                 ),
               ),
@@ -73,12 +74,16 @@ class _Step3ViewState extends State<Step3View> {
               SizedBox(height: 60),
               Row(
                 children: [
-                  CustomButton2(onPressed: () {}, text: 'رجوع'),
+                  CustomButton2(onPressed: () {
+                    GoRouter.of(context).pop();
+                  }, text: 'رجوع'),
                   Spacer(),
-                  CustomButton2(onPressed: () {}, text: 'أنشاء حساب'),
+                  CustomButton2(onPressed: () {
+                    //
+                  }, text: 'أنشاء حساب'),
                 ],
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 30),
             ],
           ),
         ),
