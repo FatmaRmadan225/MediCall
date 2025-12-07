@@ -66,7 +66,9 @@ class LoginView extends StatelessWidget {
                   children: [
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.forgetpass);
+                      },
                       child: Text(
                         'نسيت كلمة المرور؟',
                         style: TextStyle(
@@ -83,7 +85,9 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 100),
 
                 CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.kBottomVavPage);
+                  },
                   text: 'تسجيل الدخول',
                 ),
 
@@ -94,7 +98,7 @@ class LoginView extends StatelessWidget {
                     const Spacer(),
                     GestureDetector(
                       onTap: () {
-                      GoRouter.of(context).push(AppRouter.kChoicePage);
+                        GoRouter.of(context).push(AppRouter.kChoicePage);
                       },
                       child: Text(
                         ' أنشئ حسابًا',
@@ -105,7 +109,7 @@ class LoginView extends StatelessWidget {
                       'ليس لديك حساب؟',
                       style: TextStyle(color: priColor, fontSize: 13),
                     ),
-                   const Spacer(),
+                    const Spacer(),
                   ],
                 ),
                 const SizedBox(height: 30),

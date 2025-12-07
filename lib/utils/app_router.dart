@@ -1,4 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:grad_project/features/authentication/presentation/views/forget_password/screens/ResetPasswordScreen.dart';
+import 'package:grad_project/features/authentication/presentation/views/forget_password/screens/forgot_pass_screen.dart';
+import 'package:grad_project/features/authentication/presentation/views/forget_password/screens/pass_code.dart';
 import 'package:grad_project/features/authentication/presentation/views/login_view.dart';
 import 'package:grad_project/features/authentication/presentation/views/sign_up_view.dart';
 import 'package:grad_project/features/authentication/presentation/views/step2_view.dart';
@@ -18,7 +21,10 @@ abstract class AppRouter {
   static const String kSignUp = "/sign_up_page";
   static const String kSign2Up = "/sign_up_steptwo_page";
   static const String kSign3Up = "/sign_up_stepthree_page";
-
+  static const String forgetpass = "/forget_password_page";
+  static const String kPassCode = "/pass_code_page";
+  static const String kResetPassword = "/reset_password_page";
+  
   static final router = GoRouter(
     routes: [
       GoRoute(path: "/", builder: (context, state) => SplashView()),
@@ -34,8 +40,12 @@ abstract class AppRouter {
       GoRoute(path: kChoicePage, builder: (context, state) => ChoicePageView()),
       GoRoute(path: kLoginPage, builder: (context, state) => LoginView()),
       GoRoute(path: kSignUp, builder: (context, state) => SignUpView()),
-       GoRoute(path: kSign2Up, builder: (context, state) => Step2View()),
-        GoRoute(path: kSign3Up, builder: (context, state) => Step3View()),
+      GoRoute(path: kSign2Up, builder: (context, state) => Step2View()),
+      GoRoute(path: kSign3Up, builder: (context, state) => Step3View()),
+      GoRoute(path: forgetpass, builder: (context, state) => ForgotPasswordScreen()),
+      GoRoute(path: kPassCode, builder: (context, state) => VerificationCodeScreen()),
+      GoRoute(path: kResetPassword, builder: (context, state) => ResetPasswordScreen()),
+
     ],
   );
 }
