@@ -26,65 +26,68 @@ class _Step3ViewState extends State<Step3View> {
       backgroundColor: Colors.white,
 
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 36),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-             const SizedBox(height: 30),
-
-              Container(
-                height: 40,
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/images/medicall2(1)(1).png",
-                  fit: BoxFit.contain,
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 36),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+               const SizedBox(height: 30),
+          
+                Container(
+                  height: 40,
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/images/medicall2(1)(1).png",
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
-
-              SizedBox(height: 25),
-              Steps(num: 3),
-
-              Text(
-                "رفع الشهادات",
-                style: TextStyle(
-                  color: secColor,
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Inter",
+          
+                SizedBox(height: 25),
+                Steps(num: 3),
+          
+                Text(
+                  "رفع الشهادات",
+                  style: TextStyle(
+                    color: secColor,
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Inter",
+                  ),
                 ),
-              ),
-
-              SizedBox(height: 25),
-              UploadPhotoesBotton(
-                onPressed: () async {
-                  final picked = await pickMultipleImages();
-                  setState(() {
-                    photos = picked; // ✨ تحديث الصور
-                  });
-                },
-                text: "رفع الصور",
-              ),
-
-              SizedBox(height: 30),
-
-              Expanded(
-                child: PhotosGridViewer(images: photos),
-              ),
-              SizedBox(height: 60),
-              Row(
-                children: [
-                  CustomButton2(onPressed: () {
-                    GoRouter.of(context).pop();
-                  }, text: 'رجوع'),
-                  Spacer(),
-                  CustomButton2(onPressed: () {
-                    //
-                  }, text: 'أنشاء حساب'),
-                ],
-              ),
-              SizedBox(height: 30),
-            ],
+          
+                SizedBox(height: 25),
+                UploadPhotoesBotton(
+                  onPressed: () async {
+                    final picked = await pickMultipleImages();
+                    setState(() {
+                      photos = picked; // ✨ تحديث الصور
+                    });
+                  },
+                  text: "رفع الصور",
+                ),
+          
+                SizedBox(height: 30),
+          
+                Expanded(
+                  child: PhotosGridViewer(images: photos),
+                ),
+                SizedBox(height: 60),
+                Row(
+                  children: [
+                    CustomButton2(onPressed: () {
+                      GoRouter.of(context).pop();
+                    }, text: 'رجوع'),
+                    Spacer(),
+                    CustomButton2(onPressed: () {
+                      //
+                    }, text: 'أنشاء حساب'),
+                  ],
+                ),
+                SizedBox(height: 30),
+              ],
+            ),
           ),
         ),
       ),

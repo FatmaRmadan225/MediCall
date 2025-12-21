@@ -24,88 +24,91 @@ class _ChoicePageViewState extends State<ChoicePageView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 30),
-            Container(
-              height: 40, // ارتفاع أقل للحاوية حول اللوجو
-              alignment: Alignment.center,
-              child: Image.asset(
-                "assets/images/medicall2(1)(1).png",
-                //  width: 250,
-                fit: BoxFit.contain,
-              ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              "من أنت؟",
-              style: TextStyle(
-                color: kPrimaryColorC,
-                fontFamily: "Tajawal",
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              ".حدد دورك للمتابعة",
-              style: TextStyle(
-                color: kPrimaryColorB,
-                fontFamily: "Tajawal",
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isActive2 = false;
-                    isActive1 = true;
-                    type = "DN";
-                  });
-                },
-                child: CustomChoiceButton(
-                  isActive: isActive1,
-                  text: "دكتور/ممرض",
-                  image: "assets/images/image 3 (1).png",
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+              Container(
+                height: 40, // ارتفاع أقل للحاوية حول اللوجو
+                alignment: Alignment.center,
+                child: Image.asset(
+                  "assets/images/medicall2(1)(1).png",
+                  //  width: 250,
+                  fit: BoxFit.contain,
                 ),
               ),
-            ),
-            SizedBox(height: 15),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 45.0),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isActive1 = false;
-                    isActive2 = true;
-                    type = "P";
-                  });
-                },
-                child: CustomChoiceButton(
-                  isActive: isActive2,
-                  text: "مريض",
-                  image: "assets/images/image 4 (1).png",
+              SizedBox(height: 20),
+              Text(
+                "من أنت؟",
+                style: TextStyle(
+                  color: kPrimaryColorC,
+                  fontFamily: "Tajawal",
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-
-            Spacer(),
-            CustomButton(onPressed: () {
-              if(type.isNotEmpty){
-             if(type=="DN"){
-              GoRouter.of(context).push(AppRouter.kSignUp);
-             }
-              }else{
-              snackBarMethod(context, "you must choice one");
-              }
-            }, text: "استمر"),
-            SizedBox(height: 30),
-          ],
+              Text(
+                ".حدد دورك للمتابعة",
+                style: TextStyle(
+                  color: kPrimaryColorB,
+                  fontFamily: "Tajawal",
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+          
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isActive2 = false;
+                      isActive1 = true;
+                      type = "DN";
+                    });
+                  },
+                  child: CustomChoiceButton(
+                    isActive: isActive1,
+                    text: "دكتور/ممرض",
+                    image: "assets/images/image 3 (1).png",
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+          
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 45.0),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isActive1 = false;
+                      isActive2 = true;
+                      type = "P";
+                    });
+                  },
+                  child: CustomChoiceButton(
+                    isActive: isActive2,
+                    text: "مريض",
+                    image: "assets/images/image 4 (1).png",
+                  ),
+                ),
+              ),
+          
+              Spacer(),
+              CustomButton(onPressed: () {
+                if(type.isNotEmpty){
+               if(type=="DN"){
+                GoRouter.of(context).push(AppRouter.kSignUp);
+               }
+                }else{
+                snackBarMethod(context, "you must choice one");
+                }
+              }, text: "استمر"),
+              SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );

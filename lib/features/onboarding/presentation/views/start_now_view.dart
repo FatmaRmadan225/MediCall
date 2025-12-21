@@ -37,9 +37,9 @@ class StartNowView extends StatelessWidget {
         
             // النص الرئيسي
             Align(
-              alignment: AlignmentGeometry.directional(0.5, 0),
+              alignment: AlignmentGeometry.directional(-0.5, 0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 
                 children: [
                   _buildText("MediCall مرحبا بك في "),
