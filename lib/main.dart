@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:grad_project/generated/l10n.dart';
 import 'package:grad_project/utils/app_router.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
 void main() {
   runApp(const MediApp());
 }
@@ -13,7 +12,7 @@ class MediApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      locale: Locale("ar"),
+        locale: Locale("ar"),
   routerConfig: AppRouter.router,
          localizationsDelegates: const [
                 S.delegate,

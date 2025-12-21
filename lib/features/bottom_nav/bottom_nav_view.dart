@@ -34,7 +34,9 @@ class _BottomNavViewState extends State<BottomNavView> {
     // double profileRadius = iconSize + 8;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(child: _widget.elementAt(currentIndex)),
+      body: Directionality(
+        textDirection: TextDirection.ltr,
+        child: SafeArea(child: _widget.elementAt(currentIndex))),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,

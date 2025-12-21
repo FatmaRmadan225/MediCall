@@ -21,9 +21,9 @@ abstract class AppRouter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: "/", builder: (context, state) => SplashView()),
+    //  GoRoute(path: "/", builder: (context, state) => SplashView()),
       GoRoute(
-        path: kBottomVavPage,
+        path: "/",//kBottomVavPage,
         builder: (context, state) => BottomNavView(),
       ),
       GoRoute(path: kStartNow, builder: (context, state) => StartNowView()),

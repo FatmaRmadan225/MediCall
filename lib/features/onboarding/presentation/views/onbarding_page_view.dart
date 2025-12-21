@@ -35,33 +35,41 @@ class _PageViewState extends State<OnboardingPageView> {
       Column(
         children: [
           Expanded(
-            child: PageView(
-              onPageChanged: (value){
-                setState(() {
-                   index=value;
-                });
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: PageView(
                
-              },
-              controller: _controller,
-              children: [
-                FirstPageView(),
-                SecondPageView(),
-                ThirdPageView(),
-                FourPageView(),
-                FivePgaeView()
-              ],
+                onPageChanged: (value){
+                  setState(() {
+                     index=value;
+                     print(index);
+                  });
+                 
+                },
+                controller: _controller,
+                children: [
+                  FirstPageView(),
+                  SecondPageView(),
+                  ThirdPageView(),
+                  FourPageView(),
+                  FivePgaeView()
+                ],
+              ),
             ),
           ),
           SizedBox(height: 40,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomIndecator(isActive: index==0),
-              CustomIndecator(isActive: index==1),
-              CustomIndecator(isActive: index==2),
-              CustomIndecator(isActive: index==3),
-              CustomIndecator(isActive: index==4),
-            ],
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomIndecator(isActive: index==0),
+                CustomIndecator(isActive: index==1),
+                CustomIndecator(isActive: index==2),
+                CustomIndecator(isActive: index==3),
+                CustomIndecator(isActive: index==4),
+              ],
+            ),
           ),
           SizedBox(height: 30,),
           CustomButton(onPressed: (){

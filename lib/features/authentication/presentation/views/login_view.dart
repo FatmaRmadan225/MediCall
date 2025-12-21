@@ -89,24 +89,27 @@ class LoginView extends StatelessWidget {
 
                 const SizedBox(height: 25),
 
-                Row(
-                  children: [
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                      GoRouter.of(context).push(AppRouter.kChoicePage);
-                      },
-                      child: Text(
-                        ' أنشئ حسابًا',
-                        style: TextStyle(color: secColor, fontSize: 15),
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Row(
+                    children: [
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                        GoRouter.of(context).push(AppRouter.kChoicePage);
+                        },
+                        child: Text(
+                          ' أنشئ حسابًا',
+                          style: TextStyle(color: secColor, fontSize: 15),
+                        ),
                       ),
-                    ),
-                    Text(
-                      'ليس لديك حساب؟',
-                      style: TextStyle(color: priColor, fontSize: 13),
-                    ),
-                   const Spacer(),
-                  ],
+                      Text(
+                        'ليس لديك حساب؟',
+                        style: TextStyle(color: priColor, fontSize: 13),
+                      ),
+                     const Spacer(),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 30),
               ],
