@@ -14,7 +14,7 @@ class MediApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
         locale: Locale("ar"),
   routerConfig: AppRouter.router,
-         localizationsDelegates: const [
+        localizationsDelegates: const [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
