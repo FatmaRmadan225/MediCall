@@ -11,7 +11,13 @@ class MediApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.white,
+      )
+      ),
       debugShowCheckedModeBanner: false,
+
         locale: Locale("ar"),
   routerConfig: AppRouter.router,
         localizationsDelegates: const [
