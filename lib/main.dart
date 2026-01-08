@@ -13,20 +13,23 @@ class MediApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeView(),
+    return MaterialApp.router(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.white,
+      )
+      ),
+      debugShowCheckedModeBanner: false,
+
+        locale: Locale("ar"),
+  routerConfig: AppRouter.router,
+        localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
     );
-  //   return MaterialApp.router(
-  //     debugShowCheckedModeBanner: false,
-  //       locale: Locale("ar"),
-  // routerConfig: AppRouter.router,
-  //       localizationsDelegates: const [
-  //               S.delegate,
-  //               GlobalMaterialLocalizations.delegate,
-  //               GlobalWidgetsLocalizations.delegate,
-  //               GlobalCupertinoLocalizations.delegate,
-  //             ],
-  //             supportedLocales: S.delegate.supportedLocales,
-  //   );
   }
 }

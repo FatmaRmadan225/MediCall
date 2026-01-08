@@ -26,7 +26,7 @@ class HomeView extends StatelessWidget {
     ),
     CategoryModel(
       name: "الجلدية",
-      icon: "assets/images/skin.png.lnk",
+      icon: "assets/images/skin.png",
     ),
     CategoryModel(
       name: "التمريض المنزلي",
