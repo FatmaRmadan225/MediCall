@@ -1,4 +1,12 @@
+// category_model.dart
 class CategoryModel {
-  CategoryModel({required this.icon,required this.name});
-  String icon,name;
+  final String name;
+  final String icon;
+  final String? id; // ⬅️ إضافة ID للمستقبل
+  
+  CategoryModel({
+    required this.name,
+    required this.icon,
+    this.id,
+  });
 }

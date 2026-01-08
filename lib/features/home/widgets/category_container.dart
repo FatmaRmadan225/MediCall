@@ -1,41 +1,66 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:grad_project/constants.dart';
 import 'package:grad_project/features/home/models/category_model.dart';
 
 class CategoryContainer extends StatelessWidget {
-  const CategoryContainer(
-      {super.key, required this.categoryModel, required this.radius});
+  const CategoryContainer({
+    super.key, 
+    required this.categoryModel, 
+    required this.onTap
+  });
 
   final CategoryModel categoryModel;
-  final double radius;
+  final VoidCallback onTap; // ⬅️ تغيير من Function إلى VoidCallback
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-    
-      children: [
-        CircleAvatar(
-          backgroundColor: Color(0xffE1F2F8),
-          radius: radius + 3,
-          child: Padding(
-            padding: const EdgeInsets.all(6), // 🔥 تصغير حجم الصورة
-            child: Image.asset(
-              categoryModel.icon,
-              fit: BoxFit.contain,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 90, // ⬅️ أكبر شوية
+        width: 90,
+        decoration: BoxDecoration(
+          color: const Color(0xffE1F2F8),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 5,
+              offset: const Offset(0, 3),
             ),
-          ),
+          ],
         ),
-        SizedBox(height: 5),
-        Text(
-          categoryModel.name,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontFamily: "Tajawal",
-            fontWeight: FontWeight.bold,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                categoryModel.icon,
+                width: 35, // ⬅️ حجم ثابت للصورة
+                height: 35,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(
+                categoryModel.name,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: "Tajawal",
+                  color: secColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
