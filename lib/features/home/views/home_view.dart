@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:grad_project/constants.dart';
 import 'package:grad_project/features/home/models/category_model.dart';
 import 'package:grad_project/features/home/models/doctor_model.dart';
+import 'package:grad_project/features/home/widgets/categories_grid.dart';
 import 'package:grad_project/features/home/widgets/category_container.dart';
 import 'package:grad_project/features/home/widgets/custom_doctor_card.dart';
 import 'package:grad_project/features/home/widgets/custom_header_card.dart';
@@ -10,7 +10,68 @@ import 'package:grad_project/features/home/widgets/header.dart';
 import 'package:grad_project/features/home/widgets/specialty_row.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+   HomeView({super.key});
+   final List<CategoryModel> categories = [
+    CategoryModel(
+      name: "الطب الباطني",
+      icon: "assets/images/internalMedicin.png",
+    ),
+    CategoryModel(
+      name: "العلاج الطبيعي",
+      icon: "assets/images/phesical.png",
+    ),
+    CategoryModel(
+      name: "العظام",
+      icon: "assets/images/bone1.png",
+    ),
+    CategoryModel(
+      name: "الجلدية",
+      icon: "assets/images/skin.png",
+    ),
+    CategoryModel(
+      name: "التمريض المنزلي",
+      icon: "assets/images/nursing.png",
+    ),
+    CategoryModel(
+      name: "المزيد",
+      icon: "assets/images/Plus.png",
+    ),
+    // يمكن إضافة المزيد...
+  ];
+      List<DoctorModel> doctorModelList = [
+      DoctorModel(
+        image: "assets/images/tempphoto.png",
+        name: "حمزة طارق",
+        specialty: "استشاري جراحة",
+        rate: "4.9",
+        price: "120",
+      ),
+      DoctorModel(
+        image: "assets/images/tempphoto.png",
+        name: "حمزة طارق",
+        specialty: "استشاري جراحة",
+        rate: "4.9",
+        price: "120",
+      ),
+      DoctorModel(
+        image: "assets/images/tempphoto.png",
+        name: "حمزة طارق",
+        specialty: "استشاري جراحة",
+        rate: "4.9",
+        price: "120",
+      ),
+    ];
+   void _onCategoryTap(int index) {
+    print("تم النقر على التصنيف: ${categories[index].name}");
+    
+    // يمكنك عمل navigation هنا
+    // Navigator.push(context, MaterialPageRoute(
+    //   builder: (context) => CategoryDetailsPage(category: categories[index])
+    // ));
+    
+    // أو عرض dialog
+    // showDialog(...);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,65 +79,9 @@ class HomeView extends StatelessWidget {
     double iconSize = width * 0.065;
     double fontSize = width * 0.04;
 
-    List<CategoryModel> categoriesImageList = [
-      CategoryModel(icon: "assets/images/nurs.png", name: "تمريض \nمنزلي"),
-      CategoryModel(icon: "assets/images/heart.png", name: "قلب"),
-      CategoryModel(icon: "assets/images/bones.png", name: "عظام"),
-      CategoryModel(icon: "assets/images/dentist.png", name: "اسنان"),
-      CategoryModel(
-        icon: "assets/images/neurologist.png",
-        name: "مخ \nو أعصاب",
-      ),
-      CategoryModel(
-        icon: "assets/images/neurologist.png",
-        name: "مخ \nو أعصاب",
-      ),
-      CategoryModel(icon: "assets/images/dentist.png", name: "اسنان"),
-      CategoryModel(
-        icon: "assets/images/neurologist.png",
-        name: "مخ \nو أعصاب",
-      ),
-      CategoryModel(
-        icon: "assets/images/neurologist.png",
-        name: "مخ \nو أعصاب",
-      ),
-      CategoryModel(icon: "assets/images/dentist.png", name: "اسنان"),
-      CategoryModel(
-        icon: "assets/images/neurologist.png",
-        name: "مخ \nو أعصاب",
-      ),
-      CategoryModel(
-        icon: "assets/images/neurologist.png",
-        name: "مخ \nو أعصاب",
-      ),
-    ];
-
-    List<DoctorModel> doctorModelList = [
-      DoctorModel(
-        image: "assets/images/tempphoto.png",
-        name: "حمزة طارق",
-        specialty: "استشاري جراحة",
-        rate: "4.9",
-        price: "120",
-      ),
-      DoctorModel(
-        image: "assets/images/tempphoto.png",
-        name: "حمزة طارق",
-        specialty: "استشاري جراحة",
-        rate: "4.9",
-        price: "120",
-      ),
-      DoctorModel(
-        image: "assets/images/tempphoto.png",
-        name: "حمزة طارق",
-        specialty: "استشاري جراحة",
-        rate: "4.9",
-        price: "120",
-      ),
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+    return Scaffold(
+      body:  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 24),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: SizedBox(height: 12)),
@@ -84,30 +89,17 @@ class HomeView extends StatelessWidget {
             child: Header(fontSize: fontSize, iconSize: iconSize),
           ),
 
-          SliverToBoxAdapter(child: SizedBox(height: 12)),
+          SliverToBoxAdapter(child: SizedBox(height:50)),
           SliverToBoxAdapter(child: CustomHeaderCard(fontSize: fontSize)),
-          SliverToBoxAdapter(child: SizedBox(height: 12)),
+          SliverToBoxAdapter(child: SizedBox(height: 18)),
           SliverToBoxAdapter(child: SpecialtyRow(fontSize: fontSize)),
           SliverToBoxAdapter(child: SizedBox(height: 12)),
 
           /// ⬇ هنا التعديل:
           SliverToBoxAdapter(
-            child: SizedBox(
-              height: 3 * iconSize + 35,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                reverse: true, // 🔥 يبدأ من اليسار
-                itemCount: categoriesImageList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: CategoryContainer(
-                      categoryModel: categoriesImageList[index],
-                      radius: iconSize,
-                    ),
-                  );
-                },
-              ),
+            child: CategoriesGrid(
+              categories: categories,
+              onCategoryTap: _onCategoryTap,
             ),
           ),
           SliverToBoxAdapter(
@@ -136,8 +128,7 @@ class HomeView extends StatelessWidget {
             ),
           ),
 
-          SliverList.builder(
-            
+   SliverList.builder(
             itemCount: doctorModelList.length,
             itemBuilder: (context, index) {
               return Column(
@@ -149,15 +140,19 @@ class HomeView extends StatelessWidget {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 10),
-                    child: Divider(height: 2,thickness: 1,),
-                  )
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0,
+                      vertical: 10,
+                    ),
+                    child: Divider(height: 2, thickness: 1),
+                  ),
                 ],
               );
             },
           ),
         ],
       ),
+    ),
     );
   }
 }
